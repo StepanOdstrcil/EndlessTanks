@@ -171,6 +171,9 @@
     <ClInclude Include="Box2D\Collision\b2TimeOfImpact.h">
       <Filter>Box2D\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="Game\GameEngine.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box2D\Rope\b2Rope.cpp">
@@ -311,5 +314,9 @@
     <ClCompile Include="Box2D\Collision\b2TimeOfImpact.cpp">
       <Filter>Box2D\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameEngine.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EndlessTanks.cpp" />
   </ItemGroup>
 </Project>
