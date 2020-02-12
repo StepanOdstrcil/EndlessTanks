@@ -85,7 +85,7 @@ void Application::Destroy()
 {
     if (gs_pSingelton)
     {
-        assert(gs_Window.second && "Window should be destroyed before destroying the application instance.");
+        assert(gs_Window.second == nullptr && "Window should be destroyed before destroying the application instance.");
 
         delete gs_pSingelton;
         gs_pSingelton = nullptr;

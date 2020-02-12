@@ -59,6 +59,7 @@ void Window::OnRender(RenderEventArgs& e)
         auto renderTarget = Application::Get().GetRenderTarget();
         
         BeginPaint(mhWnd, &ps);
+        renderTarget->BeginDraw();
 
 
         RenderEventArgs renderEventArgs(mRenderClock.GetDeltaSeconds(), mRenderClock.GetTotalSeconds());

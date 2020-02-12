@@ -100,5 +100,6 @@ bool EndlessTanksGame::LoadContent()
 
 void EndlessTanksGame::UnloadContent()
 {
+    // Content unloaded
     mContentLoaded = false;
 }
