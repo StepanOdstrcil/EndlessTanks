@@ -1,8 +1,8 @@
 #include "EndlessTanksGame.hpp"
 
-#include "../GameBase/Application.hpp"
+#include "../BaseAppEngine/Application.hpp"
 #include "../Helpers/Helpers.hpp"
-#include "../GameBase/Window.hpp"
+#include "../BaseAppEngine/Window.hpp"
 
 #include <wrl.h>
 
@@ -32,7 +32,7 @@ void EndlessTanksGame::OnUpdate(UpdateEventArgs& e)
         double fps = frameCount / totalTime;
 
         char buffer[512];
-        sprintf_s(buffer, "FPS: %f\n", fps);
+        sprintf_s(buffer, "FPS: %f; Total Time: %f\n", fps, e.TotalTime);
         OutputDebugStringA(buffer);
 
         frameCount = 0;

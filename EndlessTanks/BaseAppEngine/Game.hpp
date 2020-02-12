@@ -7,10 +7,11 @@
 #include <string>
 
 #include "../Helpers/Events.hpp"
+#include "../GameCode/BaseGameComponents/IGameComponent.hpp"
 
 class Window;
 
-class Game : public std::enable_shared_from_this<Game>
+class Game : public std::enable_shared_from_this<Game>, public IGameComponent
 {
 private:
     std::wstring mName;

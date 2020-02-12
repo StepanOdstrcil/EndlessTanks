@@ -2,31 +2,64 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="GameBase\Application.cpp">
-      <Filter>GameBase</Filter>
-    </ClCompile>
-    <ClCompile Include="GameBase\Window.cpp">
-      <Filter>GameBase</Filter>
-    </ClCompile>
-    <ClCompile Include="GameBase\Game.cpp">
-      <Filter>GameBase</Filter>
-    </ClCompile>
     <ClCompile Include="Helpers\HighResolutionClock.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="GameCode\EndlessTanksGame.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="GameCode\HUD.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\Maze.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseAppEngine\Application.cpp">
+      <Filter>BaseAppEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseAppEngine\Game.cpp">
+      <Filter>BaseAppEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseAppEngine\Window.cpp">
+      <Filter>BaseAppEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\BaseGameComponents\Movable.cpp">
+      <Filter>GameCode\BaseGameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\BaseGameComponents\Position.cpp">
+      <Filter>GameCode\BaseGameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\BaseGameComponents\Velocity.cpp">
+      <Filter>GameCode\BaseGameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\Tanks\Tank.cpp">
+      <Filter>GameCode\Tanks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameCode">
       <UniqueIdentifier>{0f87b105-397a-4642-b59d-4d4c87919047}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameBase">
-      <UniqueIdentifier>{3d10360a-a76f-44fc-8703-fea525748376}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Helpers">
       <UniqueIdentifier>{22e3ae06-ee13-47d1-92b2-464014cdc9a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCode\Weapons">
+      <UniqueIdentifier>{750f81b1-5083-45e5-a8d3-c19d49c77fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCode\Effects">
+      <UniqueIdentifier>{4a199b6d-fc2e-488c-85f5-50e230b1df5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCode\Players">
+      <UniqueIdentifier>{f25d8c6e-8a95-44b5-b626-e587172094f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCode\Tanks">
+      <UniqueIdentifier>{ede6503c-4db8-4a26-8fbd-6b06b709c13b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseAppEngine">
+      <UniqueIdentifier>{b98278f9-ea23-4d78-b431-8a39e1d4392f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCode\BaseGameComponents">
+      <UniqueIdentifier>{ed928c09-9178-4ff2-a9fb-ce3b9aa3ef87}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,15 +72,6 @@
     <ClInclude Include="Helpers\Helpers.hpp">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="GameBase\Application.hpp">
-      <Filter>GameBase</Filter>
-    </ClInclude>
-    <ClInclude Include="GameBase\Window.hpp">
-      <Filter>GameBase</Filter>
-    </ClInclude>
-    <ClInclude Include="GameBase\Game.hpp">
-      <Filter>GameBase</Filter>
-    </ClInclude>
     <ClInclude Include="Helpers\D2D1LibPCH.hpp">
       <Filter>Helpers</Filter>
     </ClInclude>
@@ -56,6 +80,36 @@
     </ClInclude>
     <ClInclude Include="GameCode\EndlessTanksGame.hpp">
       <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\HUD.hpp">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\Maze.hpp">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseAppEngine\Window.hpp">
+      <Filter>BaseAppEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseAppEngine\Application.hpp">
+      <Filter>BaseAppEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseAppEngine\Game.hpp">
+      <Filter>BaseAppEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\BaseGameComponents\Velocity.hpp">
+      <Filter>GameCode\BaseGameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\BaseGameComponents\Movable.hpp">
+      <Filter>GameCode\BaseGameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\BaseGameComponents\Position.hpp">
+      <Filter>GameCode\BaseGameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\BaseGameComponents\IBaseGameComponents.hpp">
+      <Filter>GameCode\BaseGameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\Tanks\Tank.hpp">
+      <Filter>GameCode\Tanks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

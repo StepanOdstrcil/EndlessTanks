@@ -144,10 +144,21 @@ int Application::Run(std::shared_ptr<Game> pGame)
     MSG msg = { 0 };
     while (msg.message != WM_QUIT)
     {
-        if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+        if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
+        }
+
+        if (gs_Window.second)
+        {
+            // Delta time will be filled in by the Window.
+            UpdateEventArgs updateEventArgs(0.0f, 0.0f);
+            gs_Window.second->OnUpdate(updateEventArgs);
+
+            // Delta time will be filled in by the Window.
+            RenderEventArgs renderEventArgs(0.0f, 0.0f);
+            gs_Window.second->OnRender(renderEventArgs);
         }
     }
 

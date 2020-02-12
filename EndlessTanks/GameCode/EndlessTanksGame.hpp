@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../GameBase/Game.hpp"
-#include "../GameBase/Window.hpp"
+#include "../BaseAppEngine/Game.hpp"
+#include "../BaseAppEngine/Window.hpp"
 
 class EndlessTanksGame :
 	public Game

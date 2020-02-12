@@ -19,18 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameBase\Application.cpp" />
-    <ClCompile Include="GameBase\Game.cpp" />
-    <ClCompile Include="GameBase\Window.cpp" />
+    <ClCompile Include="BaseAppEngine\Application.cpp" />
+    <ClCompile Include="BaseAppEngine\Game.cpp" />
+    <ClCompile Include="BaseAppEngine\Window.cpp" />
+    <ClCompile Include="GameCode\BaseGameComponents\Movable.cpp" />
+    <ClCompile Include="GameCode\BaseGameComponents\Position.cpp" />
+    <ClCompile Include="GameCode\BaseGameComponents\Velocity.cpp" />
     <ClCompile Include="GameCode\EndlessTanksGame.cpp" />
+    <ClCompile Include="GameCode\HUD.cpp" />
+    <ClCompile Include="GameCode\Maze.cpp" />
+    <ClCompile Include="GameCode\Tanks\Tank.cpp" />
     <ClCompile Include="Helpers\HighResolutionClock.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameBase\Application.hpp" />
-    <ClInclude Include="GameBase\Game.hpp" />
-    <ClInclude Include="GameBase\Window.hpp" />
+    <ClInclude Include="BaseAppEngine\Application.hpp" />
+    <ClInclude Include="BaseAppEngine\Game.hpp" />
+    <ClInclude Include="BaseAppEngine\Window.hpp" />
+    <ClInclude Include="GameCode\BaseGameComponents\IBaseGameComponents.hpp" />
+    <ClInclude Include="GameCode\BaseGameComponents\Movable.hpp" />
+    <ClInclude Include="GameCode\BaseGameComponents\Position.hpp" />
+    <ClInclude Include="GameCode\BaseGameComponents\Velocity.hpp" />
     <ClInclude Include="GameCode\EndlessTanksGame.hpp" />
+    <ClInclude Include="GameCode\HUD.hpp" />
+    <ClInclude Include="GameCode\Maze.hpp" />
+    <ClInclude Include="GameCode\Tanks\Tank.hpp" />
     <ClInclude Include="Helpers\D2D1LibPCH.hpp" />
     <ClInclude Include="Helpers\Events.hpp" />
     <ClInclude Include="Helpers\Helpers.hpp" />
