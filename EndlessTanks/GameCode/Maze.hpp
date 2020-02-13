@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IGameComponent.hpp"
+#include "BaseGameComponents/IBaseGameComponents.hpp"
 
 class Maze : public IGameComponent
 {

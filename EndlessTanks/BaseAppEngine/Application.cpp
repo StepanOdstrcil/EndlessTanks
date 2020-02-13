@@ -162,7 +162,7 @@ int Application::Run(std::shared_ptr<Game> pGame)
         }
     }
 
-    pGame->UnloadContent();
+    //pGame->UnloadContent(); // Happens in Destroy()
     pGame->Destroy();
 
     return static_cast<int>(msg.wParam);

@@ -9,4 +9,3 @@ public:
 	float X;
 	float Y;
 };
-

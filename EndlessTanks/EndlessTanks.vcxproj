@@ -49,6 +49,13 @@
     <ClInclude Include="Helpers\Helpers.hpp" />
     <ClInclude Include="Helpers\HighResolutionClock.hpp" />
     <ClInclude Include="Helpers\KeyCodes.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Tank.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

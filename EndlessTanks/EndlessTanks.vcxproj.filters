@@ -61,6 +61,9 @@
     <Filter Include="GameCode\BaseGameComponents">
       <UniqueIdentifier>{ed928c09-9178-4ff2-a9fb-ce3b9aa3ef87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{273f375e-0693-4e3e-b4c9-e719b4a912c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Helpers\Events.hpp">
@@ -111,5 +114,14 @@
     <ClInclude Include="GameCode\Tanks\Tank.hpp">
       <Filter>GameCode\Tanks</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Tank.png">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

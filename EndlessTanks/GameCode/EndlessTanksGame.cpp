@@ -1,14 +1,10 @@
 #include "EndlessTanksGame.hpp"
 
-#include "../BaseAppEngine/Application.hpp"
-#include "../Helpers/Helpers.hpp"
-#include "../BaseAppEngine/Window.hpp"
-
 #include <wrl.h>
-
 #include <d2d1.h>
 
-#include <algorithm> // For std::min and std::max.
+#include <algorithm>
+
 #if defined(min)
 #undef min
 #endif
@@ -16,6 +12,10 @@
 #if defined(max)
 #undef max
 #endif
+
+#include "../BaseAppEngine/Application.hpp"
+#include "../Helpers/Helpers.hpp"
+#include "../BaseAppEngine/Window.hpp"
 
 void EndlessTanksGame::OnUpdate(UpdateEventArgs& e)
 {
@@ -40,6 +40,7 @@ void EndlessTanksGame::OnUpdate(UpdateEventArgs& e)
     }
 
     // Update the game
+    mpTank->OnUpdate(e);
 }
 
 void EndlessTanksGame::OnRender(RenderEventArgs& e)
@@ -50,6 +51,8 @@ void EndlessTanksGame::OnRender(RenderEventArgs& e)
 
     auto c = D2D1::ColorF(0.2f, 0.5f, 0.2f);
     renderTarget->Clear(c);
+
+    mpTank->OnRender(e);
 }
 
 void EndlessTanksGame::OnKeyPressed(KeyEventArgs& e)
@@ -84,6 +87,7 @@ void EndlessTanksGame::OnResize(ResizeEventArgs& e)
 EndlessTanksGame::EndlessTanksGame(const std::wstring& name, int width, int height)
     : base(name, width, height)
 	, mContentLoaded(false)
+    , mpTank(nullptr)
 {
 }
 
@@ -91,7 +95,7 @@ bool EndlessTanksGame::LoadContent()
 {
     auto renderTarget = Application::Get().GetRenderTarget();
 
-
+    mpTank = new Tank(Position(200, 200), D2D1::ColorF(1.f, 0.f, 0.f));
 
     // Content loaded
     mContentLoaded = true;
@@ -100,6 +104,8 @@ bool EndlessTanksGame::LoadContent()
 
 void EndlessTanksGame::UnloadContent()
 {
+    delete mpTank;
+
     // Content unloaded
     mContentLoaded = false;
 }

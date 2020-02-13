@@ -7,7 +7,7 @@
 #include <string>
 
 #include "../Helpers/Events.hpp"
-#include "../GameCode/BaseGameComponents/IGameComponent.hpp"
+#include "../GameCode/BaseGameComponents/IBaseGameComponents.hpp"
 
 class Window;
 

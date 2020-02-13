@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BaseGameComponents/IGameComponent.hpp"
+#include "BaseGameComponents/IBaseGameComponents.hpp"
 
 class HUD : public IGameComponent
 {
@@ -9,4 +9,3 @@ public:
 	virtual void OnUpdate(UpdateEventArgs& e) override;
 	virtual void OnRender(RenderEventArgs& e) override;
 };
-

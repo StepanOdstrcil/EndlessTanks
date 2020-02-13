@@ -2,6 +2,7 @@
 
 #include "../BaseAppEngine/Game.hpp"
 #include "../BaseAppEngine/Window.hpp"
+#include "Tanks/Tank.hpp"
 
 class EndlessTanksGame :
 	public Game
@@ -10,6 +11,8 @@ private:
     // Helper functions
 
     bool mContentLoaded;
+
+    Tank* mpTank;
 
 protected:
     /**

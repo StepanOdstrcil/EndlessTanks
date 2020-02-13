@@ -1,15 +1,14 @@
 #pragma once
 
+#include <d2d1.h>
+
 #include "Velocity.hpp"
 
-class Position
+typedef struct Position : public D2D1_POINT_2F
 {
 public:
-	float X;
-	float Y;
-
 	Position();
 	Position(float x, float y);
 
 	void UpdatePosition(Velocity& velocity);
-};
+} Position;
