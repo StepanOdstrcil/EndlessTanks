@@ -12,3 +12,13 @@ inline void ThrowIfFailed(HRESULT hr)
         throw std::exception();
     }
 }
+
+//inline float RadToDeg(float angleRad)
+//{
+//    return angleRad * RAD_TO_DEG;
+//}
+//
+//inline float DegToRad(float angleDeg)
+//{
+//    return angleDeg * DEG_TO_RAD;
+//}

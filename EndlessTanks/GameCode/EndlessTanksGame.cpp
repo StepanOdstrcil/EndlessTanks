@@ -40,7 +40,22 @@ void EndlessTanksGame::OnUpdate(UpdateEventArgs& e)
     }
 
     // Update the game
+
     mpTank->OnUpdate(e);
+
+    for (BaseProjectile*& bp : lpProjectiles)
+    {
+        if (bp->HasLifeTimeEnded())
+        {
+            delete bp;
+            bp = nullptr;
+        }
+        else
+        {
+            bp->OnUpdate(e);
+        }
+    }
+    lpProjectiles.erase(std::remove(lpProjectiles.begin(), lpProjectiles.end(), nullptr), lpProjectiles.end());
 }
 
 void EndlessTanksGame::OnRender(RenderEventArgs& e)
@@ -52,22 +67,47 @@ void EndlessTanksGame::OnRender(RenderEventArgs& e)
     auto c = D2D1::ColorF(0.2f, 0.5f, 0.2f);
     renderTarget->Clear(c);
 
+    // Render game components
     mpTank->OnRender(e);
+
+    for (BaseProjectile*& bp : lpProjectiles)
+    {
+        bp->OnRender(e);
+    }
 }
 
 void EndlessTanksGame::OnKeyPressed(KeyEventArgs& e)
 {
     base::OnKeyPressed(e);
 
+    BaseProjectile* bp;
     switch (e.Key)
     {
-    case KeyCode::Escape:
+    case KeyCode::Key::Up:
+        mpTank->Forward();
+        break;
+    case KeyCode::Key::Down:
+        mpTank->Backward();
+        break;
+    case KeyCode::Key::Left:
+        mpTank->TurnLeft();
+        break;
+    case KeyCode::Key::Right:
+        mpTank->TurnRight();
+        break;
+    case KeyCode::Key::Space:
+        // TEST
+        bp = mpTank->Fire();
+        if (bp)
+            lpProjectiles.push_back(bp);
+        break;
+    case KeyCode::Key::Escape:
         Application::Get().Quit(0);
         break;
-    case KeyCode::Enter:
+    case KeyCode::Key::Enter:
         if (e.Alt)
         {
-        case KeyCode::F11:
+        case KeyCode::Key::F11:
             mpWindow->ToggleFullscreen();
             break;
         }
@@ -82,6 +122,11 @@ void EndlessTanksGame::OnResize(ResizeEventArgs& e)
 
         // Recalculate game size
     }
+}
+
+void EndlessTanksGame::OnAddProjectile(BaseProjectile* projectile)
+{
+    lpProjectiles.push_back(projectile);
 }
 
 EndlessTanksGame::EndlessTanksGame(const std::wstring& name, int width, int height)
@@ -99,6 +144,7 @@ bool EndlessTanksGame::LoadContent()
 
     // Content loaded
     mContentLoaded = true;
+
     return true;
 }
 

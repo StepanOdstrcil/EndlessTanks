@@ -1,11 +1,13 @@
 #pragma once
 
+#include <list>
+
 #include "../BaseAppEngine/Game.hpp"
 #include "../BaseAppEngine/Window.hpp"
 #include "Tanks/Tank.hpp"
+#include "Weapons/Projectiles/BaseProjectile.hpp"
 
-class EndlessTanksGame :
-	public Game
+class EndlessTanksGame : public Game
 {
 private:
     // Helper functions
@@ -13,6 +15,7 @@ private:
     bool mContentLoaded;
 
     Tank* mpTank;
+    std::list<BaseProjectile*> lpProjectiles;
 
 protected:
     /**
@@ -32,6 +35,11 @@ protected:
     virtual void OnKeyPressed(KeyEventArgs& e) override;
 
     virtual void OnResize(ResizeEventArgs& e) override;
+
+    /**
+     * Invoked when tank Fire.
+    */
+    void OnAddProjectile(BaseProjectile* projectile);
 
 public:
     using base = Game;

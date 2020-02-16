@@ -17,7 +17,7 @@ public:
 class KeyEventArgs : public EventArgs
 {
 public:
-    enum KeyState
+    enum class KeyState
     {
         Released = 0,
         Pressed = 1
@@ -69,14 +69,14 @@ public:
 class MouseButtonEventArgs : public EventArgs
 {
 public:
-    enum MouseButton
+    enum class MouseButton
     {
         None = 0,
         Left = 1,
         Right = 2,
-        Middel = 3
+        Middle = 3
     };
-    enum ButtonState
+    enum class ButtonState
     {
         Released = 0,
         Pressed = 1

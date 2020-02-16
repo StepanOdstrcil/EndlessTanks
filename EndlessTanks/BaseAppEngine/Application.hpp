@@ -8,6 +8,8 @@
 #include <d2d1.h>
 #pragma comment(lib, "d2d1")
 
+#include "../Helpers/Events.hpp"
+
 class Window;
 class Game;
 
@@ -29,6 +31,8 @@ protected:
 
     // Destroy the application instance and all windows associated with this application.
     virtual ~Application();
+
+    KeyEventArgs GetKeyPressed();
 
     Microsoft::WRL::ComPtr<ID2D1Factory> GetFactory();
     Microsoft::WRL::ComPtr<ID2D1HwndRenderTarget> CreateRenderTarget(Microsoft::WRL::ComPtr<ID2D1Factory> factory);

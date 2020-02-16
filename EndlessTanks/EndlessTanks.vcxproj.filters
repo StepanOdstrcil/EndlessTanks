@@ -35,6 +35,18 @@
     <ClCompile Include="GameCode\Tanks\Tank.cpp">
       <Filter>GameCode\Tanks</Filter>
     </ClCompile>
+    <ClCompile Include="GameCode\Weapons\BaseCanon.cpp">
+      <Filter>GameCode\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\Players\Player.cpp">
+      <Filter>GameCode\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\Weapons\Projectiles\BaseProjectile.cpp">
+      <Filter>GameCode\Weapons\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\Players\Controls\KeyControls.cpp">
+      <Filter>GameCode\Players\Controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameCode">
@@ -63,6 +75,12 @@
     </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{273f375e-0693-4e3e-b4c9-e719b4a912c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCode\Weapons\Projectiles">
+      <UniqueIdentifier>{027fd4be-e921-4aa0-a03d-1a75e0e5faf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCode\Players\Controls">
+      <UniqueIdentifier>{8d535298-7a74-44e7-b642-f5241da7fd8a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +133,21 @@
       <Filter>GameCode\Tanks</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="GameCode\Weapons\BaseCanon.hpp">
+      <Filter>GameCode\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\Players\Player.hpp">
+      <Filter>GameCode\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\Weapons\Projectiles\BaseProjectile.hpp">
+      <Filter>GameCode\Weapons\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\Players\Controls\KeyControls.hpp">
+      <Filter>GameCode\Players\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCode\Players\Controls\ITankControls.hpp">
+      <Filter>GameCode\Players\Controls</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

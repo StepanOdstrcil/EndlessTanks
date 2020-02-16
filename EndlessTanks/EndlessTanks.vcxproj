@@ -28,7 +28,11 @@
     <ClCompile Include="GameCode\EndlessTanksGame.cpp" />
     <ClCompile Include="GameCode\HUD.cpp" />
     <ClCompile Include="GameCode\Maze.cpp" />
+    <ClCompile Include="GameCode\Players\Controls\KeyControls.cpp" />
+    <ClCompile Include="GameCode\Players\Player.cpp" />
     <ClCompile Include="GameCode\Tanks\Tank.cpp" />
+    <ClCompile Include="GameCode\Weapons\BaseCanon.cpp" />
+    <ClCompile Include="GameCode\Weapons\Projectiles\BaseProjectile.cpp" />
     <ClCompile Include="Helpers\HighResolutionClock.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -43,7 +47,12 @@
     <ClInclude Include="GameCode\EndlessTanksGame.hpp" />
     <ClInclude Include="GameCode\HUD.hpp" />
     <ClInclude Include="GameCode\Maze.hpp" />
+    <ClInclude Include="GameCode\Players\Controls\ITankControls.hpp" />
+    <ClInclude Include="GameCode\Players\Controls\KeyControls.hpp" />
+    <ClInclude Include="GameCode\Players\Player.hpp" />
     <ClInclude Include="GameCode\Tanks\Tank.hpp" />
+    <ClInclude Include="GameCode\Weapons\BaseCanon.hpp" />
+    <ClInclude Include="GameCode\Weapons\Projectiles\BaseProjectile.hpp" />
     <ClInclude Include="Helpers\D2D1LibPCH.hpp" />
     <ClInclude Include="Helpers\Events.hpp" />
     <ClInclude Include="Helpers\Helpers.hpp" />

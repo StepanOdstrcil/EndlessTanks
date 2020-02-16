@@ -6,9 +6,21 @@
 #include "Velocity.hpp"
 #include "IBaseGameComponents.hpp"
 
+constexpr float PI = 3.14159265359f;
+constexpr float RAD_CIRCLE = 2 * PI;
+constexpr float DEG_TO_RAD = RAD_CIRCLE / 360;
+constexpr float RAD_TO_DEG = 360 / RAD_CIRCLE;
+
 class Movable : public IGameUpdatable
 {
+protected:
+	void FixAngle();
+
+	D2D1::Matrix3x2F GetRotationTransform(float angleRad);
+
 public:
+	static const float FullCircleRad;
+
 	float mAngleRad;
 	Position mPosition;
 	Velocity mVelocity;
