@@ -13,10 +13,11 @@ class BaseCanon : public IGameComponent
 private:
 	D2D1_POINT_2F mCanonPoints[2];
 	HighResolutionClock mClock;
-	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mBrush;
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mColorBrush;
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mOutlineColorBrush;
 
 public:
-	BaseCanon(D2D1_POINT_2F centerPosition, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> brush);
+	BaseCanon(D2D1_POINT_2F centerPosition, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush);
 	virtual ~BaseCanon();
 
 	virtual BaseProjectile* Fire();

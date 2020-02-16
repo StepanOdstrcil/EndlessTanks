@@ -1,10 +1,11 @@
 #include "BaseProjectile.hpp"
 #include "../../../BaseAppEngine/Application.hpp"
 
-BaseProjectile::BaseProjectile(Position position, float angleRad, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> brush)
+BaseProjectile::BaseProjectile(Position position, float angleRad, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush)
 	: Movable(position, Velocity(1.f * sinf(angleRad), 1.f * cosf(angleRad)))
 	, mLifeTimeMs(10000)
-	, mBrush(brush)
+	, mColorBrush(colorBrush)
+	, mOutlineColorBrush(outlineColorBrush)
 	, mElipse()
 	, mClock()
 {
@@ -33,5 +34,5 @@ void BaseProjectile::OnRender(RenderEventArgs& e)
 {
 	auto renderTarget = Application::Get().GetRenderTarget();
 
-	renderTarget->FillEllipse(mElipse, mBrush.Get());
+	renderTarget->FillEllipse(mElipse, mColorBrush.Get());
 }

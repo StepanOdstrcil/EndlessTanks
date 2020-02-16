@@ -11,14 +11,15 @@ class BaseProjectile : public Movable, public IGameComponent
 {
 private:
 	double mLifeTimeMs;
-	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mBrush;
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mColorBrush;
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mOutlineColorBrush;
 	D2D1_ELLIPSE mElipse;
 
 protected:
 	HighResolutionClock mClock;
 
 public:
-	BaseProjectile(Position position, float angleRad, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> brush);
+	BaseProjectile(Position position, float angleRad, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush);
 	virtual ~BaseProjectile();
 
 	bool HasLifeTimeEnded();

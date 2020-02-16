@@ -6,6 +6,7 @@
 #include "../../BaseAppEngine/Application.hpp"
 #include "../../Helpers/Helpers.hpp"
 
+const float Tank::TankOutlinePercents = 0.1f;
 const float Tank::TankWidth = 66.f;
 const float Tank::TankHeight = 90.f;
 const float Tank::TankHalfWidth = Tank::TankWidth / 2;
@@ -46,18 +47,27 @@ void Tank::Move(float dX, float dY)
 Tank::Tank(Position position, D2D1::ColorF color)
 	: Movable(position)
 	, mTankColor(color)
-	, mTankOutlineRect()
+	, mTankColorBrush(nullptr)
+	, mTankOutlineColor(D2D1::ColorF(1.f, 1.f, 1.f))
+	, mTankOutlineColorBrush(nullptr)
 	, mpCanon(nullptr)
-	, mBrush(nullptr)
+	, mTankOutlineRect()
+	, mTankFillRect()
 {
 	mPositions[0] = Position(mPosition.x - TankHalfWidth, mPosition.y - TankHalfHeight);
 	mPositions[1] = Position(mPosition.x + TankHalfWidth, mPosition.y - TankHalfHeight);
 	mPositions[2] = Position(mPosition.x + TankHalfWidth, mPosition.y + TankHalfHeight);
 	mPositions[3] = Position(mPosition.x - TankHalfWidth, mPosition.y + TankHalfHeight);
 
-	ThrowIfFailed(Application::Get().GetRenderTarget()->CreateSolidColorBrush(mTankColor, &mBrush));
+	mTankOutlineRect.top = 0;
+	mTankOutlineRect.left = 0;
+	mTankOutlineRect.bottom = 0;
+	mTankOutlineRect.right = 0;
 
-	mpCanon = new BaseCanon(mPosition, mBrush);
+	ThrowIfFailed(Application::Get().GetRenderTarget()->CreateSolidColorBrush(mTankColor, &mTankColorBrush));
+	ThrowIfFailed(Application::Get().GetRenderTarget()->CreateSolidColorBrush(mTankOutlineColor, &mTankOutlineColorBrush));
+
+	mpCanon = new BaseCanon(mPosition, mTankColorBrush, mTankOutlineColorBrush);
 }
 
 Tank::~Tank()
@@ -110,9 +120,9 @@ void Tank::OnRender(RenderEventArgs& e)
 
 	for (int i = 0; i < 3; i++)
 	{
-		renderTarget->DrawLine(mPositions[i], mPositions[i + 1], mBrush.Get());
+		renderTarget->DrawLine(mPositions[i], mPositions[i + 1], mTankColorBrush.Get());
 	}
-	renderTarget->DrawLine(mPositions[3], mPositions[0], mBrush.Get());
+	renderTarget->DrawLine(mPositions[3], mPositions[0], mTankColorBrush.Get());
 
 	mpCanon->OnRender(e);
 }

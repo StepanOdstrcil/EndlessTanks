@@ -14,18 +14,21 @@ class Tank : public Movable, public IGameComponent
 {
 private:
 	D2D1_RECT_F mTankOutlineRect;
+	D2D1_RECT_F mTankFillRect;
 	Position mPositions[4];
 	BaseCanon* mpCanon;
-	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mBrush;
+
+	const D2D1::ColorF mTankOutlineColor;
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mTankOutlineColorBrush;
+	const D2D1::ColorF mTankColor;
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mTankColorBrush;
 
 protected:
+	static const float TankOutlinePercents;
 	static const float TankWidth;
 	static const float TankHeight;
 	static const float TankHalfWidth;
 	static const float TankHalfHeight;
-
-
-	const D2D1::ColorF mTankColor;
 
 	void Turn(float angleRad);
 	void Move(float dX, float dY);

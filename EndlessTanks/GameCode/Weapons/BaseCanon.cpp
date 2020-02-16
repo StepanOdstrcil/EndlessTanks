@@ -1,9 +1,10 @@
 #include "BaseCanon.hpp"
 #include "../../BaseAppEngine/Application.hpp"
 
-BaseCanon::BaseCanon(D2D1_POINT_2F centerPosition, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> brush)
+BaseCanon::BaseCanon(D2D1_POINT_2F centerPosition, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush)
 	: mClock()
-	, mBrush(brush)
+	, mColorBrush(colorBrush)
+	, mOutlineColorBrush(outlineColorBrush)
 {
 	mCanonPoints[0] = D2D1::Point2F(centerPosition.x, centerPosition.y);
 	mCanonPoints[1] = D2D1::Point2F(centerPosition.x, centerPosition.y - 45 - 20.f);
@@ -21,7 +22,7 @@ BaseProjectile* BaseCanon::Fire()
 
 		float angleRad = atan2f(mCanonPoints[1].x - mCanonPoints[0].x, mCanonPoints[1].y - mCanonPoints[0].y);
 
-		return new BaseProjectile(Position(mCanonPoints[1].x, mCanonPoints[1].y), angleRad, mBrush);
+		return new BaseProjectile(Position(mCanonPoints[1].x, mCanonPoints[1].y), angleRad, mColorBrush, mOutlineColorBrush);
 	}
 
 	return nullptr;
@@ -57,5 +58,5 @@ void BaseCanon::OnRender(RenderEventArgs& e)
 {
 	auto renderTarget = Application::Get().GetRenderTarget();
 
-	renderTarget->DrawLine(mCanonPoints[0], mCanonPoints[1], mBrush.Get());
+	renderTarget->DrawLine(mCanonPoints[0], mCanonPoints[1], mColorBrush.Get());
 }
