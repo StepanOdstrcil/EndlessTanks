@@ -7,14 +7,20 @@
 #include "../../Helpers/HighResolutionClock.hpp"
 #include "../../Helpers/Events.hpp"
 #include "Projectiles/BaseProjectile.hpp"
+#include "../Tanks/Tank.hpp"
 
 class BaseCanon : public IGameComponent
 {
 private:
-	D2D1_POINT_2F mCanonPoints[2];
 	HighResolutionClock mClock;
 	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mColorBrush;
 	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mOutlineColorBrush;
+
+	D2D1_RECT_F mCanonCanonRect;
+	D2D1_RECT_F mCanonTowerRect;
+
+protected:
+	D2D1_POINT_2F mCollisionPositions[4];
 
 public:
 	BaseCanon(D2D1_POINT_2F centerPosition, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush);

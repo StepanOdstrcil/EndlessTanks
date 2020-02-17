@@ -6,9 +6,9 @@
 #include "../../BaseAppEngine/Application.hpp"
 #include "../../Helpers/Helpers.hpp"
 
-const float Tank::TankOutlinePercents = 0.1f;
 const float Tank::TankWidth = 66.f;
 const float Tank::TankHeight = 90.f;
+const float Tank::TankOutlineStroke = 0.06f * TankWidth;
 const float Tank::TankHalfWidth = Tank::TankWidth / 2;
 const float Tank::TankHalfHeight = Tank::TankHeight / 2;
 
@@ -40,6 +40,11 @@ void Tank::Move(float dX, float dY)
 	mPositions[3].x += dX;
 	mPositions[3].y += dY;
 
+	mTankFillRect.left += dX;
+	mTankFillRect.top += dY;
+	mTankFillRect.right += dX;
+	mTankFillRect.bottom += dY;
+
 	D2D1::Matrix3x2F translationTransform = D2D1::Matrix3x2F::Translation(dX, dY);
 	mpCanon->SetPosition(translationTransform);
 }
@@ -48,10 +53,9 @@ Tank::Tank(Position position, D2D1::ColorF color)
 	: Movable(position)
 	, mTankColor(color)
 	, mTankColorBrush(nullptr)
-	, mTankOutlineColor(D2D1::ColorF(1.f, 1.f, 1.f))
+	, mTankOutlineColor(D2D1::ColorF(0.f, 0.f, 0.f))
 	, mTankOutlineColorBrush(nullptr)
 	, mpCanon(nullptr)
-	, mTankOutlineRect()
 	, mTankFillRect()
 {
 	mPositions[0] = Position(mPosition.x - TankHalfWidth, mPosition.y - TankHalfHeight);
@@ -59,10 +63,10 @@ Tank::Tank(Position position, D2D1::ColorF color)
 	mPositions[2] = Position(mPosition.x + TankHalfWidth, mPosition.y + TankHalfHeight);
 	mPositions[3] = Position(mPosition.x - TankHalfWidth, mPosition.y + TankHalfHeight);
 
-	mTankOutlineRect.top = 0;
-	mTankOutlineRect.left = 0;
-	mTankOutlineRect.bottom = 0;
-	mTankOutlineRect.right = 0;
+	mTankFillRect.left = mPositions[0].x + TankOutlineStroke;
+	mTankFillRect.top = mPositions[0].y + TankOutlineStroke;
+	mTankFillRect.right = mPositions[2].x - TankOutlineStroke;
+	mTankFillRect.bottom = mPositions[2].y - TankOutlineStroke;
 
 	ThrowIfFailed(Application::Get().GetRenderTarget()->CreateSolidColorBrush(mTankColor, &mTankColorBrush));
 	ThrowIfFailed(Application::Get().GetRenderTarget()->CreateSolidColorBrush(mTankOutlineColor, &mTankOutlineColorBrush));
@@ -117,6 +121,11 @@ void Tank::OnUpdate(UpdateEventArgs& e)
 void Tank::OnRender(RenderEventArgs& e)
 {
 	auto renderTarget = Application::Get().GetRenderTarget();
+
+	renderTarget->SetTransform(GetRotationTransform(mAngleRad));
+	renderTarget->FillRectangle(mTankFillRect, mTankColorBrush.Get());
+	renderTarget->DrawRectangle(mTankFillRect, mTankOutlineColorBrush.Get(), TankOutlineStroke);
+	renderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
 
 	for (int i = 0; i < 3; i++)
 	{
