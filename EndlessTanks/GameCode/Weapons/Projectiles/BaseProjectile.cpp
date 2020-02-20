@@ -1,8 +1,11 @@
 #include "BaseProjectile.hpp"
 #include "../../../BaseAppEngine/Application.hpp"
+#include "../../Tanks/Tank.hpp"
+
+const float BaseProjectile::BaseProjectileRadius = 5.f;
 
 BaseProjectile::BaseProjectile(Position position, float angleRad, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush)
-	: Movable(position, Velocity(1.f * sinf(angleRad), 1.f * cosf(angleRad)))
+	: Movable(position, Velocity(Tank::Speed * sinf(angleRad), -Tank::Speed* cosf(angleRad)))
 	, mLifeTimeMs(10000)
 	, mColorBrush(colorBrush)
 	, mOutlineColorBrush(outlineColorBrush)
@@ -10,7 +13,7 @@ BaseProjectile::BaseProjectile(Position position, float angleRad, Microsoft::WRL
 	, mClock()
 {
 	mElipse.point = position;
-	mElipse.radiusX = mElipse.radiusY = 5.f;
+	mElipse.radiusX = mElipse.radiusY = BaseProjectileRadius;
 }
 
 BaseProjectile::~BaseProjectile()
@@ -35,4 +38,9 @@ void BaseProjectile::OnRender(RenderEventArgs& e)
 	auto renderTarget = Application::Get().GetRenderTarget();
 
 	renderTarget->FillEllipse(mElipse, mColorBrush.Get());
+	renderTarget->DrawEllipse(mElipse, mOutlineColorBrush.Get(), Tank::TankOutlineStroke);
+}
+
+void BaseProjectile::Rotate(const D2D1::Matrix3x2F& rotationTransform)
+{
 }

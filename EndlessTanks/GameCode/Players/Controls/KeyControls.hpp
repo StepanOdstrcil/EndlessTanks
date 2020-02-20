@@ -9,6 +9,7 @@ protected:
 	KeyCode::Key mBackwardKey;
 	KeyCode::Key mRightKey;
 	KeyCode::Key mLeftKey;
+	KeyCode::Key mFireKey;
 
 public:
 	KeyControls(KeyCode::Key forward, KeyCode::Key backward, KeyCode::Key right, KeyCode::Key left, KeyCode::Key fire);

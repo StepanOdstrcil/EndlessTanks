@@ -34,6 +34,13 @@ Movable::Movable(Position position, Velocity velocity, float angleRad)
 {
 }
 
+void Movable::Rotate(const float angleIncrementRad)
+{
+	mAngleRad += angleIncrementRad;
+
+	FixAngle();
+}
+
 void Movable::OnUpdate(UpdateEventArgs& e)
 {
 	mPosition.UpdatePosition(mVelocity);

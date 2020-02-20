@@ -19,6 +19,8 @@ protected:
 	HighResolutionClock mClock;
 
 public:
+	static const float BaseProjectileRadius;
+
 	BaseProjectile(Position position, float angleRad, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush);
 	virtual ~BaseProjectile();
 
@@ -27,4 +29,7 @@ public:
 	// Dìdí se pøes IGameComponent.
 	virtual void OnUpdate(UpdateEventArgs& e) override;
 	virtual void OnRender(RenderEventArgs& e) override;
+
+	// Dìdí se pøes Movable.
+	virtual void Rotate(const D2D1::Matrix3x2F& rotationTransform) override;
 };

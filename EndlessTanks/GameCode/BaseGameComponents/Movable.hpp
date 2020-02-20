@@ -29,6 +29,9 @@ public:
 	Movable(Position position);
 	Movable(Position position, Velocity velocity, float angleRad = 0.f);
 
+	virtual void Rotate(const float angleIncrementRad);
+	virtual void Rotate(const D2D1::Matrix3x2F& rotationTransform) = 0;
+
 	// Dìdí se pøes IGameUpdatable.
 	virtual void OnUpdate(UpdateEventArgs& e) override;
 };

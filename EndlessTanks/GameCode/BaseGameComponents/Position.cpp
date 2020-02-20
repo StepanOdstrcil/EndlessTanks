@@ -10,7 +10,7 @@ Position::Position(float x, float y)
 	this->y = y;
 }
 
-void Position::UpdatePosition(Velocity& velocity)
+void Position::UpdatePosition(const Velocity& velocity)
 {
 	x += velocity.X;
 	y += velocity.Y;

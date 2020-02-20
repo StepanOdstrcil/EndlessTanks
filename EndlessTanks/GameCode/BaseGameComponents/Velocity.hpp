@@ -4,7 +4,7 @@ class Velocity
 {
 public:
 	Velocity();
-	Velocity(float x, float y);
+	Velocity(const float x, const float y);
 
 	float X;
 	float Y;

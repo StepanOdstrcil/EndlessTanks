@@ -10,5 +10,5 @@ public:
 	Position();
 	Position(float x, float y);
 
-	void UpdatePosition(Velocity& velocity);
+	void UpdatePosition(const Velocity& velocity);
 } Position;

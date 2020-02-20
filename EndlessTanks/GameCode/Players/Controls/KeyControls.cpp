@@ -5,6 +5,7 @@ KeyControls::KeyControls(KeyCode::Key forward, KeyCode::Key backward, KeyCode::K
 	, mBackwardKey(backward)
 	, mRightKey(right)
 	, mLeftKey(left)
+	, mFireKey(fire)
 {
 }
 
@@ -27,12 +28,18 @@ void KeyControls::ProcessEvent(KeyEventArgs& e)
 	{
 		BackwardEvent();
 	}
-	else if (e.Key == mRightKey && RightEvent)
+	
+	if (e.Key == mRightKey && RightEvent)
 	{
 		RightEvent();
 	}
 	else if (e.Key == mLeftKey && LeftEvent)
 	{
 		LeftEvent();
+	}
+
+	if (e.Key == mFireKey && FireEvent)
+	{
+		FireEvent();
 	}
 }

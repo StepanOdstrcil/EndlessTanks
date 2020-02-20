@@ -7,30 +7,32 @@
 #include "../../Helpers/HighResolutionClock.hpp"
 #include "../../Helpers/Events.hpp"
 #include "Projectiles/BaseProjectile.hpp"
-#include "../Tanks/Tank.hpp"
 
-class BaseCanon : public IGameComponent
+class BaseCanon : public Movable, public IGameComponent
 {
 private:
 	HighResolutionClock mClock;
 	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mColorBrush;
 	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> mOutlineColorBrush;
 
-	D2D1_RECT_F mCanonCanonRect;
-	D2D1_RECT_F mCanonTowerRect;
+	D2D1_RECT_F mCanonRect;
+	D2D1_RECT_F mTowerRect;
 
 protected:
-	D2D1_POINT_2F mCollisionPositions[4];
+	Position mCanonCollisionPositions[4];
 
 public:
-	BaseCanon(D2D1_POINT_2F centerPosition, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush);
+	BaseCanon(Position centerPosition, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> colorBrush, Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> outlineColorBrush);
 	virtual ~BaseCanon();
 
 	virtual BaseProjectile* Fire();
 	virtual bool CanFire();
 
-	virtual void SetPosition(D2D1::Matrix3x2F& translationTranform);
-	virtual void Rotate(D2D1::Matrix3x2F& rotationTransform);
+	virtual void Move(const Velocity& velocity);
+
+	// Dìdí se pøes Movable.
+	virtual void Rotate(const float angleIncrementRad) override;
+	virtual void Rotate(const D2D1::Matrix3x2F& rotationTransform) override;
 
 	// Dìdí se pøes IGameComponent.
 	virtual void OnUpdate(UpdateEventArgs& e) override;
